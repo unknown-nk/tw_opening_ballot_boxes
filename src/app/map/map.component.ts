@@ -1,7 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import * as echarts from 'echarts';
 import { MapService } from '../service/map.service';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-map',
@@ -10,154 +11,390 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MapComponent {
 
-  private ROOT_PATH = 'https://echarts.apache.org/examples';
   private chartDom!: HTMLDivElement;
   private myChart: any;
   private option: any;
-  private jsonUrl = 'assets/USA.json';
 
-  constructor(private el: ElementRef, private _mapService: MapService, private http: HttpClient) { }
+
+  constructor(private _mapService: MapService, private _router: Router) { }
   ngOnInit(): void {
+    const DPP = '#58AC6F'
+    const KMT = '#4889C1'
+    const PFP = '#F2854A'
+
     // 初始化 ECharts 圖表
     this.chartDom = document.getElementById('main') as HTMLDivElement;
     this.myChart = echarts.init(this.chartDom);
     // this.myChart.showLoading();
-    console.log(this.jsonUrl);
 
 
-    // 請修改為實際的 API 端點
-    this.http.get(this.jsonUrl).subscribe((usaJson: any) => {
+
+
+    this._mapService.getMapData().subscribe((usaJson: any) => {
       console.log(usaJson);
 
       // this.myChart.hideLoading();
-      echarts.registerMap('USA', usaJson, {
-        Alaska: { left: -131, top: 25, width: 15 },
-        Hawaii: { left: -110, top: 28, width: 5 },
-        'Puerto Rico': { left: -76, top: 26, width: 2 }
+      echarts.registerMap('TW', usaJson, {
+        '金門縣': { left: 119.5, top: 24.5, width: 0.3, },
+        '連江縣': { left: 119.5, top: 25, width: 0.2 },
+        // 'Puerto Rico': { left: -76, top: 26, width: 2 }
       });
 
       this.option = {
+        tooltip: false,
 
-        title: {
-          text: 'USA Population Estimates (2012)',
-          subtext: 'Data from www.census.gov',
-          sublink: 'http://www.census.gov/popest/data/datasets.html',
-          left: 'right'
-        },
-        tooltip: {
-          trigger: 'item',
-          showDelay: 0,
-          transitionDuration: 0.2
-        },
-        visualMap: {
-          left: 'right',
-          min: 500000,
-          max: 38000000,
-          inRange: {
-            color: [
-              '#313695',
-              '#4575b4',
-              '#74add1',
-              '#abd9e9',
-              '#e0f3f8',
-              '#ffffbf',
-              '#fee090',
-              '#fdae61',
-              '#f46d43',
-              '#d73027',
-              '#a50026'
-            ]
-          },
-          text: ['High', 'Low'],
-          calculable: true
-        },
-        toolbox: {
-          show: true,
-          //orient: 'vertical',
-          left: 'left',
-          top: 'top',
-          feature: {
-            dataView: { readOnly: false },
-            restore: {},
-            saveAsImage: {}
-          }
-        },
+        // visualMap: {
+        //   min: 0,
+        //   max: 1,
+        //   inRange: {
+        //     color: {
+        //       'DPP': "#58AC6F",
+        //       'KMT': "#4889C1",
+        //       'PFP': "#F2854A",
+        //     }
+        //   },
+        //   outOfRange: {
+        //     color: '#999' // 未匹配到的值使用灰色
+        //   },
+        //   show: true
+        // },
+
+
         series: [
           {
-            name: 'USA PopEstimates',
+            aspectScale: 0.9,
+            name: '台灣',
             type: 'map',
-            roam: true,
-            map: 'USA',
+            roam: false,
+            map: 'TW',
+
             emphasis: {
               label: {
-                show: true
+                show: false
+              }
+            },
+            layoutCenter: ['45%', '55%'],
+            layoutSize: 600,
+            itemStyle: {
+              normal: {
+                borderColor: 'white',
+                borderWidth: 2,
+                color: "#fff"
+              },
+              emphasis: {}
+            },
+            select: {
+              label: {
+                show: false
               }
             },
             data: [
-              { name: 'Alabama', value: 4822023 },
-              { name: 'Alaska', value: 731449 },
-              { name: 'Arizona', value: 6553255 },
-              { name: 'Arkansas', value: 2949131 },
-              { name: 'California', value: 38041430 },
-              { name: 'Colorado', value: 5187582 },
-              { name: 'Connecticut', value: 3590347 },
-              { name: 'Delaware', value: 917092 },
-              { name: 'District of Columbia', value: 632323 },
-              { name: 'Florida', value: 19317568 },
-              { name: 'Georgia', value: 9919945 },
-              { name: 'Hawaii', value: 1392313 },
-              { name: 'Idaho', value: 1595728 },
-              { name: 'Illinois', value: 12875255 },
-              { name: 'Indiana', value: 6537334 },
-              { name: 'Iowa', value: 3074186 },
-              { name: 'Kansas', value: 2885905 },
-              { name: 'Kentucky', value: 4380415 },
-              { name: 'Louisiana', value: 4601893 },
-              { name: 'Maine', value: 1329192 },
-              { name: 'Maryland', value: 5884563 },
-              { name: 'Massachusetts', value: 6646144 },
-              { name: 'Michigan', value: 9883360 },
-              { name: 'Minnesota', value: 5379139 },
-              { name: 'Mississippi', value: 2984926 },
-              { name: 'Missouri', value: 6021988 },
-              { name: 'Montana', value: 1005141 },
-              { name: 'Nebraska', value: 1855525 },
-              { name: 'Nevada', value: 2758931 },
-              { name: 'New Hampshire', value: 1320718 },
-              { name: 'New Jersey', value: 8864590 },
-              { name: 'New Mexico', value: 2085538 },
-              { name: 'New York', value: 19570261 },
-              { name: 'North Carolina', value: 9752073 },
-              { name: 'North Dakota', value: 699628 },
-              { name: 'Ohio', value: 11544225 },
-              { name: 'Oklahoma', value: 3814820 },
-              { name: 'Oregon', value: 3899353 },
-              { name: 'Pennsylvania', value: 12763536 },
-              { name: 'Rhode Island', value: 1050292 },
-              { name: 'South Carolina', value: 4723723 },
-              { name: 'South Dakota', value: 833354 },
-              { name: 'Tennessee', value: 6456243 },
-              { name: 'Texas', value: 26059203 },
-              { name: 'Utah', value: 2855287 },
-              { name: 'Vermont', value: 626011 },
-              { name: 'Virginia', value: 8185867 },
-              { name: 'Washington', value: 6897012 },
-              { name: 'West Virginia', value: 1855413 },
-              { name: 'Wisconsin', value: 5726398 },
-              { name: 'Wyoming', value: 576412 },
-              { name: 'Puerto Rico', value: 3667084 }
+              {
+                name: '連江縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+
+                  },
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '宜蘭縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '彰化縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '南投縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '雲林縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '基隆市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '臺北市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '新北市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '臺中市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '臺南市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '桃園市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '苗栗縣', value: 'KMT', itemStyle: {
+                  normal: { areaColor: KMT },
+                  emphasis: {
+                    areaColor: '#1F6EB1',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#1F6EB1', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '嘉義市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '嘉義縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '金門縣', value: 'KMT', itemStyle: {
+                  normal: { areaColor: KMT, borderWidth: 0 },
+                  emphasis: {
+                    areaColor: '#1F6EB1',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#1F6EB1', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '高雄市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '臺東縣', value: 'KMT', itemStyle: {
+                  normal: { areaColor: KMT },
+                  emphasis: {
+                    areaColor: '#1F6EB1',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#1F6EB1', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '花蓮縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '澎湖縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP, borderWidth: 0 },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '新竹市', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '新竹縣', value: 'KMT', itemStyle: {
+                  normal: { areaColor: KMT },
+                  emphasis: {
+                    areaColor: '#1F6EB1',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#1F6EB1', // 預設顏色是黃色
+                  },
+                },
+              },
+              {
+                name: '屏東縣', value: 'DPP', itemStyle: {
+                  normal: { areaColor: DPP },
+                  emphasis: {
+                    areaColor: '#4B915E',
+                  }
+                },
+                select: {
+                  itemStyle: {
+                    areaColor: '#4B915E', // 預設顏色是黃色
+                  },
+                },
+              },
+
             ]
           }
         ]
 
       };
 
-      this.myChart.setOption(this.option);
+      this.myChart.setOption(this.option, true);
+
+      this.myChart.on('click', (args: any) => {
+        const path = args.name
+        console.log(args);
+        this._router.navigate([path]);
+      })
     });
   }
 
   ngAfterViewInit(): void {
-    this.option && this.myChart.setOption(this.option);
+    this.option && this.myChart.setOption(this.option, true);
   }
 
 

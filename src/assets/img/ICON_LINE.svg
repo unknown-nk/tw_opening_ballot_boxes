@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880.75" height="22" viewBox="0 0 880.75 22">
+  <g id="ICON_LINE" transform="translate(-193.75 -320)">
+    <line id="Line_48" data-name="Line 48" x1="880.75" transform="translate(193.75 331)" fill="none" stroke="#344340" stroke-width="3"/>
+    <g id="ICON_三角形">
+      <path id="Polygon_4" data-name="Polygon 4" d="M11,0,22,19H0Z" transform="translate(213.25 320) rotate(90)" fill="#333"/>
+      <path id="Polygon_5" data-name="Polygon 5" d="M11,0,22,19H0Z" transform="translate(240.25 320) rotate(90)" fill="#333"/>
+      <path id="Polygon_6" data-name="Polygon 6" d="M11,0,22,19H0Z" transform="translate(267.25 320) rotate(90)" fill="#333"/>
+    </g>
+  </g>
+</svg>

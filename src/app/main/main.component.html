@@ -1,0 +1,137 @@
+<!-- 主要頁面 -->
+<main class="w-[1920px] h-[1080px] my-0 mx-auto flex justify-center -z-50">
+  <div
+    class="content w-full h-full object-contain bg-bg relative overflow-hidden"
+  >
+    <ul
+      class="absolute -left-10 flex text-[30px] font-bold font-CORBEL mt-[120px] z-50"
+    >
+      <ng-container *ngFor="let item of electionData">
+        <li
+          (click)="changeYear(item)"
+          class="mr-[15px] flex flex-col items-center cursor-pointer"
+          [ngClass]="{ '-mt-5': item.selected }"
+        >
+          <span
+            class="opacity-0"
+            [ngClass]="{ 'triangle opacity-100': item.selected }"
+          ></span>
+          <p
+            [ngClass]="{
+              ' text-[49px] -mt-4': item.selected,
+              'text-noFocus': !item.selected
+            }"
+          >
+            {{ item.date }}
+          </p>
+        </li>
+      </ng-container>
+    </ul>
+    <ng-container *ngIf="candidate">
+      <div class="absolute left-[280px] top-[115px]">
+        <span class="flex items-center">
+          <p class="text-[165px] font-CORBEL font-bold mr-[33px]">
+            {{ voteYear }}
+          </p>
+          <span class="-mt-6">
+            <i><img src="../../assets/img/ICON_舉手小人.svg" alt="" /></i>
+            <p class="text-[40px] font-bold tracking-[4.8px]">
+              第{{ session }}任<br />
+              總統副總統選舉
+            </p></span
+          >
+        </span>
+        <img
+          src="../../assets/img/ICON_LINE.svg"
+          alt=""
+          class="-ml-[86px] -mt-10"
+        />
+        <div
+          class="-ml-4 flex flex-col justify-center items-start mt-[70px] content-center"
+        >
+          <ng-container *ngFor="let items of candidate; let i = index">
+            <div class="flex">
+              <div class="h-[165px] pt-[50px]">
+                <p
+                  class="text-[26px] text-center tracking-[3.12px] font-medium mb-[9px]"
+                  [ngClass]="{ 'opacity-0': i !== 0 }"
+                >
+                  得票率
+                </p>
+                <span
+                  [class]="
+                    'w-[155px] h-[62px] text-[40px] flex justify-center items-center font-bold border-2 bg-white border-' +
+                    items.party +
+                    ' text-' +
+                    items.party
+                  "
+                  >{{ items.point }}</span
+                >
+              </div>
+              <div class="w-[120px] mx-4 relative">
+                <div
+                  class="absolute grid grid-cols-5 grid-flow-row"
+                  [ngClass]="{
+                    'z-30': i === 0,
+                    'z-20 -mt-[165px]': i === 1,
+                    'z-10 -mt-[330px]': i === 2
+                  }"
+                >
+                  <ng-container *ngFor="let party of pointArr; let n = index">
+                    <span
+                      [class]="
+                        'block w-[17px] h-[17px] rounded-full mr-2 mb-2 bg-' +
+                        party
+                      "
+                    ></span>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="relative">
+                <span
+                  class="mt-1.5 w-5 h-32 absolute border-r-2"
+                  [ngClass]="{
+                    'border-DPP': items.party === 'DPP',
+                    'border-KMT': items.party === 'KMT',
+                    'border-PFP': items.party === 'PFP'
+                  }"
+                ></span>
+                <div
+                  class="pl-10 mb-2"
+                  [ngClass]="{
+                    'text-DPP': items.party === 'DPP',
+                    'text-KMT': items.party === 'KMT',
+                    'text-PFP': items.party === 'PFP'
+                  }"
+                >
+                  <p class="text-[20px] tracking-[2px]">
+                    {{ items.partyName }}
+                  </p>
+                  <p class="text-[40px] font-bold tracking-[4px]">
+                    {{ items.president }}/{{ items.vicePresident }}
+                  </p>
+                </div>
+                <span
+                  class="w-[400px] h-[62px] text-[30px] tracking-[3px] font-bold text-white flex justify-center items-center"
+                  [ngClass]="{
+                    'bg-DPP': items.party === 'DPP',
+                    'bg-KMT': items.party === 'KMT',
+                    'bg-PFP': items.party === 'PFP'
+                  }"
+                  >{{ items.vote }}票</span
+                >
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+    <div class="absolute right-[236px] top-[53px] overflow-hidden">
+      <app-map class="w-[700px] absolute z-50"></app-map>
+      <img src="../../assets/img/IMG_底圖圓弧框.svg" alt="" class="" />
+    </div>
+
+    <!-- <img src="../../assets/img/home-bg.svg" alt="" class="" /> -->
+  </div>
+</main>
+<!-- <p>main works!</p> -->

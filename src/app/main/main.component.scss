@@ -1,0 +1,27 @@
+.content {
+  background-image: url("../../assets/img/home-bg.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+}
+
+// @media (max-width: 1920px) {
+//   .content {
+//     width: 100vw;
+//     height: calc(100vw * 1080 / 1920);
+//   }
+// }
+
+// @media (max-height: 1080px) {
+//   .content {
+//     width: calc(100vh * 1920 / 1080);
+//     height: 100vh;
+//   }
+// }
+
+.triangle {
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  border-top: 18px solid #333;
+  display: inline-block;
+}
