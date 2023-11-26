@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { MainComponent } from './main/main.component';
 import { ContentComponent } from './content/content.component';
+import { LoadingComponent } from './loading/loading.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     MainComponent,
-    ContentComponent
+    ContentComponent,
+    LoadingComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

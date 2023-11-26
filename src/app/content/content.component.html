@@ -1,14 +1,19 @@
-<div class="w-[1920px] h-[1080px] my-0 mx-auto flex justify-center -z-50">
-  <div class="w-full h-full bg-bg overflow-hidden relative -z-40">
+<div
+  class="w-[1920px] h-[1080px] my-0 mx-auto flex justify-center -z-50 overflow-hidden"
+>
+  <div class="w-full max-h-[2097px] overflow-y-scroll bg-bg relative">
     <button
-      class="w-[250px] h-[50px] absolute top-[132px] right-[71px] rounded-lg flex justify-center items-center border border-theme"
+      (click)="goToHome()"
+      class="return-button w-[250px] h-[50px] cursor-pointer text-[22px] tracking-[2.2px] font-medium hover:bg-theme hover:text-white absolute top-[132px] right-[71px] z-30 rounded-lg flex justify-center items-center border border-theme"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="47.887"
         height="8.854"
         viewBox="0 0 47.887 8.854"
-        class="text-theme"
+        fill="none"
+        stroke-width="2"
+        class="stroke-theme svg-return mr-3"
       >
         <g id="ICON_返回" transform="translate(-20.205 -20.794)">
           <path
@@ -16,9 +21,6 @@
             data-name="Path 341"
             d="M-4117.908,14338.9h-45.472l7.147-7.146"
             transform="translate(4186 -14310.25)"
-            fill="none"
-            stroke="#fff"
-            stroke-width="2"
           />
         </g>
       </svg>
@@ -26,12 +28,21 @@
       返回全台統計
     </button>
     <div class="w-full flex flex-col justify-center items-center">
-      <div class="w-full relative">
+      <div class="w-full relative z-30">
+        <p
+          class="absolute top-[276px] right-[540px] text-[57px] tracking-[5.7px] font-black text-theme"
+        >
+          TAINAN
+        </p>
         <img
           src="../../assets/img/ICON_LINE1.svg"
           alt=""
           class="absolute top-[320px] right-0"
         />
+        <div
+          id="map"
+          class="h-[380px] w-[300px] absolute top-[130px] left-[630px] z-50"
+        ></div>
         <img
           src="../../assets/img/IMG_圓形底圖.svg"
           alt=""
@@ -39,7 +50,273 @@
         />
       </div>
 
-      <div class="w-full h-[670px] bg-theme absolute top-[368px] -z-30"></div>
+      <div class="back w-full h-[670px] bg-theme absolute top-[368px] z-20">
+        <div class="w-full h-full flex justify-center items-center text-white">
+          <div class="mt-32">
+            <p class="text-[22px] tracking-[2.2px] font-medium text-center">
+              臺南市各行政區得票概況
+            </p>
+            <div id="bar" class="w-[1000px] h-[350px] z-50"></div>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span
+              class="tracking-[2px] text-[20px] mt-[80px] mb-[7px] flex justify-end mr-[40px]"
+              >得票率(%)</span
+            >
+            <span class="flex flex-col">
+              <span
+                class="w-[500px] h-[65px] text-[32px] font-bold tracking-[4.8px] bg-DPP mb-2 py-[9px] pl-[31px] pr-[53px] flex items-center justify-between"
+                ><p>蔡英文/賴清德</p>
+                <p>67.38</p></span
+              >
+              <span class="flex items-end mb-5">
+                <p class="text-[40px] font-bold tracking-[6px]">78萬</p>
+                <p class="text-[26px] pl-3 pb-0.5">471票</p></span
+              >
+            </span>
+            <span class="flex flex-col">
+              <span
+                class="w-[500px] h-[65px] text-[32px] font-bold tracking-[4.8px] bg-KMT mb-2 py-[9px] pl-[31px] pr-[53px] flex items-center justify-between"
+                ><p>韓國瑜/張善政</p>
+                <p>29.1</p></span
+              >
+              <span class="flex items-end mb-5">
+                <p class="text-[40px] font-bold tracking-[6px]">33萬</p>
+                <p class="text-[26px] pl-3 pb-0.5">702票</p></span
+              >
+            </span>
+            <span class="flex flex-col">
+              <span
+                class="w-[500px] h-[65px] text-[32px] font-bold tracking-[4.8px] bg-PFP mb-2 py-[9px] pl-[31px] pr-[53px] flex items-center justify-between"
+                ><p>宋楚瑜/余湘</p>
+                <p>3.52</p></span
+              >
+              <span class="flex items-end mb-5">
+                <p class="text-[40px] font-bold tracking-[6px]">41萬</p>
+                <p class="text-[26px] pl-3 pb-0.5">75票</p></span
+              >
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
+    <div
+      class="h-[872px] absolute top-[1080px] left-[50%] -translate-x-[55%] flex justify-center items-center"
+    >
+      <div>
+        <p class="text-[22px] tracking-[2.2px] font-medium text-center">
+          臺南市新營區
+        </p>
+        <div id="pie" class="w-[560px] h-[580px] z-40"></div>
+      </div>
+      <div>
+        <div class="w-[800px] flex justify-between items-end mb-[15px]">
+          <p class="text-[22px] font-medium tracking-[2.2px]">
+            臺南市各行政區得票概況
+          </p>
+          <div
+            class="flex justify-center relative items-center w-[200px] h-[50px] border border-theme text-[22px] font-medium tracking-[2.2px] cursor-pointer"
+          >
+            新營區
+            <span class="tr absolute right-[14px]"></span>
+          </div>
+        </div>
+        <div
+          class="w-full h-full grid grid-cols-3 grid-flow-row place-content-center text-[20px] tracking-[2.2px] font-medium mb-[43px]"
+        >
+          <div
+            class="flex justify-start items-center h-[45px] text-[22px] bg-theme text-white pl-[43px]"
+          >
+            候選人
+          </div>
+          <div
+            class="flex justify-center items-center text-[22px] bg-theme text-white"
+          >
+            得票數
+          </div>
+          <div
+            class="flex justify-center items-center text-[22px] bg-theme text-white"
+          >
+            得票率
+          </div>
+          <div
+            class="flex justify-start items-center h-[45px] border-b border-theme"
+          >
+            <span class="w-[15px] h-[32px] bg-DPP ml-[18px] mr-[10px]"></span>
+            蔡英文/賴清德
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            2萬8,969票
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            62.70%
+          </div>
+          <div
+            class="flex justify-start items-center h-[45px] border-b border-theme"
+          >
+            <span class="w-[15px] h-[32px] bg-KMT ml-[18px] mr-[10px]"></span>
+            韓國瑜/張善政
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            1萬5,517票
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            33.58%
+          </div>
+          <div
+            class="flex justify-start items-center h-[45px] border-b border-theme"
+          >
+            <span class="w-[15px] h-[32px] bg-PFP ml-[18px] mr-[10px]"></span>
+            宋楚瑜/余湘
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            1,720 票
+          </div>
+          <div class="flex justify-center items-center border-b border-theme">
+            3.72%
+          </div>
+        </div>
+        <div>
+          <p class="text-[22px] font-medium tracking-[2.2px] mb-[15px]">
+            各村里得票率
+          </p>
+          <div
+            class="w-full h-full grid grid-cols-4 grid-flow-row place-content-center text-[20px] tracking-[2.2px] font-medium"
+          >
+            <div
+              class="flex justify-start items-center h-[45px] text-[22px] bg-theme text-white pl-[43px]"
+            >
+              村里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] text-[22px] bg-theme text-white"
+            >
+              蔡英文/賴清德
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] text-[22px] bg-theme text-white"
+            >
+              韓國瑜/張善政
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] text-[22px] bg-theme text-white"
+            >
+              宋楚瑜/余湘
+            </div>
+            <div
+              class="flex justify-start items-center h-[45px] border-b border-theme pl-[43px]"
+            >
+              新東里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              60%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              35.8%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              4.2%
+            </div>
+
+            <div
+              class="flex justify-start items-center h-[45px] border-b border-theme pl-[43px]"
+            >
+              新南里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              62.2%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              33.2%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              4.6%
+            </div>
+
+            <div
+              class="flex justify-start items-center h-[45px] border-b border-theme pl-[43px]"
+            >
+              民榮里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              63.9%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              32.6%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              3.4%
+            </div>
+
+            <div
+              class="flex justify-start items-center h-[45px] border-b border-theme pl-[43px]"
+            >
+              新北里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              60.4%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              35.9%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              3.7%
+            </div>
+
+            <div
+              class="flex justify-start items-center h-[45px] border-b border-theme pl-[43px]"
+            >
+              忠政里
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              54%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              42.6%
+            </div>
+            <div
+              class="flex justify-center items-center h-[45px] border-b border-theme"
+            >
+              3.4%
+            </div>
+          </div>
+          <div
+            class="w-full flex justify-end items-center text-[22px] tracking-[2.2px] font-medium text-[#8D8D8D] mt-[10px]"
+          >
+            <p>下一頁</p>
+            <span class="tr2 ml-[10px]"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer class="absolute top-[1910px] w-full"></app-footer>
   </div>
 </div>
