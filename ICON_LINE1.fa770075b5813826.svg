@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1726.75" height="22" viewBox="0 0 1726.75 22">
+  <g id="ICON_LINE" transform="translate(-193.75 -320)">
+    <g id="Group_1452" data-name="Group 1452">
+      <path id="Path_10787" data-name="Path 10787" d="M888.75,0H0" transform="translate(193.75 331)" fill="none" stroke="#2c3735" stroke-width="3"/>
+      <line id="Line_56" data-name="Line 56" x1="493" transform="translate(1427.5 331)" fill="none" stroke="#2c3735" stroke-width="3"/>
+      <g id="ICON_三角形">
+        <path id="Polygon_4" data-name="Polygon 4" d="M11,0,22,19H0Z" transform="translate(213.25 320) rotate(90)" fill="#333"/>
+        <path id="Polygon_5" data-name="Polygon 5" d="M11,0,22,19H0Z" transform="translate(240.25 320) rotate(90)" fill="#333"/>
+        <path id="Polygon_6" data-name="Polygon 6" d="M11,0,22,19H0Z" transform="translate(267.25 320) rotate(90)" fill="#333"/>
+      </g>
+    </g>
+    <circle id="Ellipse_3204" data-name="Ellipse 3204" cx="8" cy="8" r="8" transform="translate(1075 323)" fill="#2c3735"/>
+  </g>
+</svg>
