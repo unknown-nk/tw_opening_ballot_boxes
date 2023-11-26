@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="278" height="430" viewBox="0 0 278 430">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_924" data-name="Rectangle 924" width="278" height="430" transform="translate(1642 677)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <circle id="Ellipse_3207" data-name="Ellipse 3207" cx="220.5" cy="220.5" r="220.5" transform="translate(1632 678)" fill="#3b4543"/>
+    </clipPath>
+  </defs>
+  <g id="IMG_背景插圖" transform="translate(-1642 -677)">
+    <g id="Mask_Group_11" data-name="Mask Group 11" clip-path="url(#clip-path)">
+      <g id="Mask_Group_10" data-name="Mask Group 10" clip-path="url(#clip-path-2)">
+        <path id="Intersection_5" data-name="Intersection 5" d="M9492.531-12122.8l22.568-22.568v27.074l-9.031,9.031Zm-26.361-26.361,48.93-48.928v27.07l-35.394,35.394Zm-26.361-26.361,75.291-75.291v27.073l-61.754,61.754Zm-26.36-26.361,101.651-101.651v27.074l-88.114,88.114Zm-26.362-26.361,128.014-128.015v27.074l-114.477,114.477Zm-26.36-26.361,154.374-154.374v27.077l-140.836,140.836Zm-26.361-26.36,180.735-180.734v27.073l-167.2,167.2ZM9308-12307.333l207.1-207.1v27.073L9321.539-12293.8Zm-26.358-26.359,233.456-233.459v27.074l-219.921,219.921Zm-26.362-26.361,217.868-217.869h27.074l-231.405,231.405Zm-26.362-26.362,191.506-191.507H9447.5l-205.043,205.043Zm-26.36-26.36,165.146-165.146h27.073L9216.1-12399.238Z" transform="translate(-7595.101 13177.922)" fill="#3b4543"/>
+      </g>
+    </g>
+  </g>
+</svg>

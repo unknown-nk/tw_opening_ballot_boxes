@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="288" height="268" viewBox="0 0 288 268">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_906" data-name="Rectangle 906" width="288" height="268" transform="translate(1391)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <circle id="Ellipse_3205" data-name="Ellipse 3205" cx="144" cy="144" r="144" transform="translate(0 0.172)" fill="#3B4543" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="IMG_背景插圖" transform="translate(-1391)">
+    <g id="Mask_Group_9" data-name="Mask Group 9" clip-path="url(#clip-path)">
+      <g id="Group_1537" data-name="Group 1537" transform="translate(22 -95.172)">
+        <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(1369 75)" clip-path="url(#clip-path-2)">
+          <g id="Group_1477" data-name="Group 1477" transform="translate(140.391 -125.016) rotate(45)">
+            <rect id="Rectangle_858" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(0 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-2" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(24.93 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-3" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(49.86 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-4" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(74.79 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-5" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(99.72 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-6" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(124.65 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-7" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(149.58 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-8" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(174.51 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-9" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(199.44 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-10" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(224.37 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-11" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(249.3 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-12" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(274.23 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-13" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(299.16 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-14" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(324.09 0)" fill="#3b4543"/>
+            <rect id="Rectangle_858-15" data-name="Rectangle 858" width="12.802" height="399.554" transform="translate(349.02 0)" fill="#3b4543"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

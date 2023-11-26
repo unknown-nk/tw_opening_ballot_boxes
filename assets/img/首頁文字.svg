@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="787" viewBox="0 0 96 787">
+  <g id="首頁文字" transform="translate(-1740 -101)">
+    <text id="TAIWAN" transform="translate(1761 385) rotate(90)" fill="#fff" font-size="65" font-family="NotoSansCJKtc-Bold, Noto Sans CJK TC" font-weight="700" letter-spacing="0.1em" opacity="0.24"><tspan x="-283" y="0">TAIWAN</tspan></text>
+    <text id="_2020" data-name="2020" transform="translate(1761 600) rotate(90)" fill="#fff" font-size="65" font-family="NotoSansCJKtc-Bold, Noto Sans CJK TC" font-weight="700" letter-spacing="0.1em" opacity="0.24"><tspan x="-172" y="0">2020</tspan></text>
+    <line id="Line_49" data-name="Line 49" y1="258" transform="translate(1787 630)" fill="none" stroke="#64706d" stroke-width="3"/>
+  </g>
+</svg>
